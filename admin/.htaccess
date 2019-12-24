@@ -1,0 +1,4 @@
+AuthName "Page d'administration protégée"
+AuthType Basic
+AuthUserFile "/Users/nicolascapozzi/Sites/myFavoriteMeal/admin/.htpasswd"
+Require valid-user

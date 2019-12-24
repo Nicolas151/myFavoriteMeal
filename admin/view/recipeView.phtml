@@ -1,0 +1,50 @@
+<?php $title = 'recette: '.htmlspecialchars($recipe['title']); ?>
+
+
+<?php ob_start(); ?>
+<section class="wrapper clearfix">
+	<h2 class="recipeTitle" >Recette n°<?= $recipe['id'] ?>: <?= htmlspecialchars($recipe['title']) ?></h2>
+	<p><?= htmlspecialchars($recipe['description']) ?></p>
+	<p class="smallText ">Publié par <?= htmlspecialchars($recipe['firstname']) ?> <?= htmlspecialchars($recipe['lastname']) ?> le <?= date_create($recipe['created_at'])->format('d/m/Y H\hi') ?></p>
+	<div class="ingredientList">
+		<h3>Les ingrédients:</h3>
+		<ul>
+		<?php foreach ($ingredients as $ingredient) : ?>
+			<li>
+				<p>- <?= htmlspecialchars($ingredient['quantity']) ?> <span class="article"> de </span><span class="ingredientName"><?= htmlspecialchars($ingredient['name']) ?></span></p>
+			</li>
+		<?php endforeach ?>
+		</ul>
+	</div>
+	<div class="recipeText">
+		<h3>La recette:</h3>
+		<p><?= nl2br(htmlspecialchars($recipe['recipe'])) ?></p>
+	</div>
+</section>
+<div class="container">
+	<div class="row mt-4 justify-content-md-center">
+		<div class="col">
+			<div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+				<?php if (!isset($recipe['checked'])) : ?>
+				<a class="btn btn-success" href="index.php?action=validate&id=<?= $recipe['id'] ?>" role="button">Valider la recette</a>
+				<?php endif ?>
+				<a class="btn btn-warning" href="index.php?action=edit&recipeId=<?= $recipe['id'] ?>" role="button">Modifier la recette</a>
+				<a class="btn btn-secondary" href="index.php" role="button">Retour</a>
+				<button id="deleteRecipe" class="btn btn-danger" >Supprimer la recette</button> 
+			</div>
+		</div>
+	</div>
+	<div id="deleteAlert" class="row mt-4 justify-content-md-center hidden">
+		<div class="col">
+			<div class="alert alert-danger" role="alert">
+			  Pour confirmer la suppression <a href="index.php?action=delete&id=<?= $recipe['id'] ?>" class="alert-link">Cliquez-ici</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../js/RecipeView.js"></script>
+<script src="../js/IngredientList.js"></script>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

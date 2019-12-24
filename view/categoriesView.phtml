@@ -1,0 +1,23 @@
+<?php $title = 'Les catégories'; ?>
+
+
+<?php ob_start(); ?>
+<section id="categories" class="categories wrapper">
+	<h2>Les catégories</h2>
+	<ul>
+	<?php foreach ($categories as $category): ?>
+		<li class="categoryItems jello-vertical">
+			<a href="index.php?action=category&id=<?= $category['id']?>">
+				<img src="img/<?= htmlspecialchars($category['photo']) ?>"  
+					 alt="<?= htmlspecialchars($category['name']) ?>" 
+					 title="<?= htmlspecialchars($category['name']) ?>">
+			</a>
+			<p><?= htmlspecialchars($category['name']) ?></p>
+		</li>
+	<?php endforeach ?>
+	</ul>
+</section>	
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

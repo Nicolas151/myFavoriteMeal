@@ -1,0 +1,15 @@
+<?php $title = 'Recette déposée'; ?>
+
+
+<?php ob_start(); ?>
+<div class="wrapper">
+	<img src="img/validation.png" class="validationPicture" alt="validation" title="validation">	
+	<h2><i class="fas fa-hand-peace"></i> Bravo <?= htmlspecialchars($userSession->getFirstname()); ?> !</h2>
+    <p><i class="fas fa-plane-departure"></i> Votre recette a été envoyée.</p>
+    <p>Elle sera traitée par notre équipe dans les plus bref délais.</p>
+    <a href="index.php" class="button">Accueil</a>
+</div>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

@@ -1,0 +1,62 @@
+<?php $title = 'Creer votre compte'; ?>
+
+
+<?php ob_start(); ?>
+<h2><i class="fas fa-pencil-alt"></i> S'inscrire</h2>
+<form class="generalForm wrapper" action="index.php" method="post">
+    <aside class="error-message hidden">
+        <h3><i class="fas fa-skull-crossbones"></i> Il y a <span class="total-error-count">1</span> erreur(s) dans le formulaire ! <i class="fas fa-skull-crossbones"></i></h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <fieldset>
+        <legend><i class="fa fa-book"></i> Vos coordonnées</legend>
+        <ul>
+            <li><input type="hidden" id="userForm" name="userForm" value="userForm"></li>
+            <li>
+                <label for="lastname">Nom* :</label>
+                <input type="text" id="lastname" name="lastname" 
+                       data-name="Nom" data-required data-minlength="2">
+            </li>
+            <li>
+                <label for="firstname">Prénom* :</label>
+                <input type="text" id="firstname" name="firstname"
+                       data-name="Prénom" data-required data-minlength="2">
+            </li>
+            <li>
+                <label for="city">Ville :</label>
+                <input type="text" id="city" name="city" data-name="Ville" data-minlength="2">
+            </li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend><i class="fa fa-lock"></i> Vos informations d'authentification</legend>
+        <ul>
+            <li>
+                <label for="email">E-mail* :</label>
+                <input type="text" id="email" name="email" data-name="E-mail"
+                       data-required data-type="email">
+            </li>
+            <li>
+                <label for="password">Mot de passe* :</label>
+                <input type="password" id="password" name="password" data-name="Mot de passe"
+                       data-required data-type="password">
+                <input type="password" id="password-verification" data-name="Confirmation de mot de passe"
+                       data-type="password-confirmation" placeholder="Saisissez à nouveau votre mot de passe">
+            </li>
+        </ul>
+    </fieldset>
+    <ul>
+        <li>
+            <input type="submit" class="buttonSuccess" value="Inscription">
+            <a href="index.php" class="button">Annuler</a>
+        </li>
+    </ul>
+</form>
+<div class="wrapper formCaption">
+    <p class="smallCaption">*Mentions obligatoires</p>
+    <p>Déja un compte ? <strong><a href="index.php?action=login">Connectez-vous</a></strong></p>
+</div>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

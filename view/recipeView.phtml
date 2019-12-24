@@ -1,0 +1,43 @@
+<?php 
+	if (!isset($errorMessage)) {
+		$title = 'recette: '.htmlspecialchars($recipe['title']);
+	} else {
+		$title = 'Erreur !';
+	}
+?>
+
+
+<?php ob_start(); ?>
+<section class="wrapper clearfix">
+	<?php if (!isset($errorMessage)): ?>
+		<h2 class="recipeTitle" ><?= htmlspecialchars($recipe['title']) ?></h2>
+		<p><?= htmlspecialchars($recipe['description']) ?></p>
+		<p class="smallText">Publié par <?= htmlspecialchars($recipe['firstname']) ?> <?= htmlspecialchars($recipe['lastname']) ?> le <?= date_create($recipe['created_at'])->format('d/m/Y H\hi') ?></p>
+		<div class="ingredientList">
+			<h3>Les ingrédients:</h3>
+			<ul>
+			<?php foreach ($ingredients as $ingredient) : ?>
+				<li>
+					<input type="checkbox" id="<?= $ingredient['id'] ?>" name="<?= $ingredient['id'] ?>">
+					<label for="<?= $ingredient['id'] ?>">
+						<?= htmlspecialchars($ingredient['quantity']) ?><span class="article"> de </span><span class="ingredientName"><?= htmlspecialchars($ingredient['name']) ?></span>
+					</label>
+				</li>
+			<?php endforeach ?>
+			</ul>
+		</div>
+		<div class="recipeText">
+			<h3>La recette:</h3>
+			<p><?= nl2br(htmlspecialchars($recipe['recipe'])) ?></p>
+		</div>
+	<?php else: ?>
+		<!-- Affichage du message d'erreur si la recette n'existe pas -->
+		<p><?= $errorMessage ?></p>
+	<?php endif ?>
+</section>
+<script src="js/RecipeView.js"></script>
+<script src="js/IngredientList.js"></script>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

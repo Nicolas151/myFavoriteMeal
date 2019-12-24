@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $title ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- icone onglet -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!--normalize-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+	<!-- CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+	<header>
+		<div class="headBand">
+			<nav class="navHeadBand wrapper">
+				<a href="index.php" id="logo"><i class="fas fa-hamburger"></i> My Favorite Meal</a>
+				<div class="navLog">
+					<?php if (isset($_SESSION['user'])): ?>
+						<a class="headerNavButton" href="index.php?action=logout">Déconnexion</a>
+					<?php else: ?>
+						<a id="connexionButton" class="headerNavButton" href="#">Connexion</a>
+						<ul id="connexionMenu" class="dropDownMenu">
+							<li>
+								<a class="buttonSuccess" href="index.php?action=login"><i class="fas fa-pizza-slice"></i> Se connecter</a>
+							</li>
+							<li>
+								<a class="buttonSecondary" href="index.php?action=user"><i class="fas fa-glass-cheers"></i> Nous rejoindre</a>
+							</li>
+						</ul>
+					<?php endif ?>
+				</div>
+			</nav>
+		</div>
+		<?php if (isset($_SESSION['user'])): ?>
+			<p class="welcomeMessage wrapper animationLoginMessage">Bon appétit <?= htmlspecialchars($_SESSION['user']['firstname']) . ' ' .htmlspecialchars($_SESSION['user']['lastname']); ?></p>
+		<?php endif ?>
+		<div class="lowHeadBand">
+			<nav class="navlowHeadBand wrapper">
+				<a class="headerNavButton" href="index.php?action=allRecipes">Tous les repas préférés</a>
+				<a class="headerNavButton" href="index.php?action=deposit">Déposer son repas</a>
+				<a class="headerNavButton" href="index.php?action=categories">Les catégories</a>
+				<?php if (isset($_SESSION['user'])): ?>
+					<a class="headerNavButton lowConnexionButton" href="index.php?action=logout">Déconnexion</a>
+				<?php else: ?>
+					<a class="headerNavButton lowConnexionButton" href="index.php?action=login">Connexion</a>
+				<?php endif ?>
+			</nav>
+		</div>
+	</header>
+	<main>
+		 <?= $content ?>
+	</main>
+	<footer>
+		<nav class="navFooter wrapper">
+			<a href="#"><i class="fab fa-facebook"></i></a>
+			<a href="#"><i class="fab fa-twitter"></i></a>
+			<a href="admin/index.php"><i class="fab fa-jedi-order vibrate"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+			<a href="https://github.com/Nicolas151"><i class="fab fa-github vibrate"></i></a>
+		</nav>		
+	</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+<script src="js/FormValidator.js"></script>
+<script src="js/utilities.js"></script>
+</body>
+</html>

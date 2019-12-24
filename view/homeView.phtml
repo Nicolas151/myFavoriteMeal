@@ -1,0 +1,47 @@
+<?php $title = 'Accueil My favorite Meal !'; ?>
+
+
+<?php ob_start(); ?>
+<section class="intro wrapper">
+	<h1>Pour quel plat seriez vous prêt à tuer?</h1>
+	<p>Faites nous partager votre recette fétiche !</p>
+	<a href="index.php?action=deposit" class="button">Déposer un plat</a>
+</section>	
+<section class="lastMeals wrapper">
+	<h2>Les derniers plats déposés:</h2>
+	<?php foreach ($meals as $meal): ?> 
+		<article class="mealItems">
+			<figure>
+			    <img src="img/<?= htmlspecialchars($meal['photo']) ?>"
+			         alt="<?= htmlspecialchars($meal['title']) ?>"
+			         title="<?= htmlspecialchars($meal['title']) ?>">
+			    <figcaption>Repas de "<?= htmlspecialchars($meal['firstname']) ?>"</figcaption>
+			</figure>
+			<h3><?= htmlspecialchars($meal['title']) ?></h3>
+			<p><?= htmlspecialchars($meal['description']) ?></p>
+			<a href="index.php?action=showRecipe&recipeId=<?= $meal['id'] ?>" class="button">Voir la recette</a>
+		</article>
+	<?php endforeach ?>
+</section>
+<section class="allMealsBanner">
+	<div class="allMeals">
+		<h2>Découvrez tous nos plats préférés</h2>
+		<a href="index.php?action=allRecipes" class="button">Voir nos plats</a>
+	</div>
+</section> 
+<section id="categories" class="categories wrapper">
+	<h2>Les catégories reines:</h2>
+	<ul>
+	<?php foreach ($categories as $category): ?>
+		<li class="categoryItems jello">
+			<a href="index.php?action=category&id=<?= $category['id']?>"><img src="img/<?= htmlspecialchars($category['photo']) ?>"  alt="<?= htmlspecialchars($category['name']) ?>" title="<?= htmlspecialchars($category['name']) ?>"></a>
+			<p><?= htmlspecialchars($category['name']) ?></p>
+		</li>
+	<?php endforeach ?>
+	</ul>
+</section>	
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>
+

@@ -1,0 +1,80 @@
+<?php $title = 'Déposez votre repas !'; ?>
+
+
+<?php ob_start(); ?>
+<h2><i class="fas fa-hamburger"></i> Déposer son Repas !</h2>
+<form id="recipe-form" class="generalForm wrapper">
+    <aside class="error-message hidden">
+        <h3><i class="fas fa-skull-crossbones"></i> Il y a <span class="total-error-count">1</span> erreur(s) dans le formulaire ! <i class="fas fa-skull-crossbones"></i></h3>
+        <!-- Balise <p> vide pour l'affichage des erreurs JS -->
+        <p></p>
+    </aside>
+    <fieldset>
+        <ul>
+            <li>
+                <input type="hidden" id="depositForm" name="depositForm" value="depositForm">
+            </li>
+            <li>
+                <label for="title">Titre de la recette :</label>
+                <input type="text" id="title" name="title" data-name="Titre" data-required data-maxlength="25" data-type="title">
+            </li>
+            <li>
+                <label for="description">Description :</label>
+                <input type="text" id="description" name="description" data-name="Description" data-required data-maxlength="50">
+            </li>
+        </ul>
+            <hr>
+        <ul>
+            <li>
+                <label for="quantity">Ingredients :</label>
+            </li>
+            <li>
+                <!-- Balise <div> vide pour l'affichage des ingredients -->
+                <div id="ingredientDisplay">
+                </div>
+            </li>
+            <li>
+                <input type="text" id="quantity" name="quantity" data-name="quantity"  placeholder="Exemple: 100g">
+            </li>
+            <li>
+                <p>de</p>
+            </li>
+            <li>
+                <input type="text" id="ingredient" name="ingredient" data-name="Ingredient" placeholder="Exemple: Farine">
+            </li>
+            <li>
+                <button  id="validate-ingredient" type="button" class="button buttonSuccess"><i class="fas fa-plus"></i></button>
+            </li>
+        </ul>
+            <hr>
+        <ul>
+            <li>
+                <label for="recipe" class="labelCenter">Recette :</label>
+                <textarea id="recipe" name="recipe" rows="10" data-name="Recette" data-required data-minlength="2"></textarea>
+            </li>
+            <li>
+                <label for="categorie">Categorie :</label>
+                <select id="categorie" name="categorie">
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></option>
+                    <?php endforeach?>
+                </select>
+            </li>
+        </ul>
+    </fieldset>
+    <ul>
+        <li>
+          <input type="submit" class="button buttonSuccess" value="Envoyer">
+          <a href="index.php" class="button">Annuler</a>
+        </li>
+    </ul>
+</form>
+<div class="wrapper formCaption">
+    <p class="smallCaption">*Mentions obligatoires</p>
+</div>
+<script src="js/IngredientList.js"></script>
+<script src="js/RecipeForm.js"></script>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

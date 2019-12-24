@@ -1,0 +1,15 @@
+<?php $title = 'Votre compte est créé'; ?>
+
+
+<?php ob_start(); ?>
+<div class="wrapper">
+	<img src="img/validation.png" class="validationPicture" alt="validation" title="validation">	
+	<h2><i class="fas fa-hand-peace"></i> Bravo <?= htmlspecialchars($_SESSION['user']['firstname']); ?> !</h2>
+    <p>Votre compte a été créé.</p>
+    <p>N'hésitez pas à déposer votre plat préféré.</p>
+    <a href="index.php" class="button">Accueil</a>
+</div>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

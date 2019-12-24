@@ -1,0 +1,589 @@
+@charset "UTF-8";
+
+/******************** CSS GLOBAL *******************/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* 62.5% de 16px = 10 px */
+}
+
+body {
+    font-size: 1.6rem;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: grey;
+ }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	color: black;
+}
+
+a , a:hover {
+ 	text-decoration: none;
+ 	color: inherit;
+ 	display: inline-block;
+ }
+
+ul {
+ 	list-style: none;
+ }
+
+#logo {
+	text-decoration: none;
+	color: white;
+	font-size: 2.5rem;
+	font-family: 'Barriecito', cursive;
+	display: inline-block;
+	padding: 10px;
+}
+
+/*UTILITAIRES*/
+
+.wrapper {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.smallText {
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/*BOUTONS*/
+
+.button {
+	padding: 15px 20px;
+	background-color: red;
+	border-radius: 5px;
+	border: 0px;
+	color: white;
+}
+
+.buttonSecondary {
+	padding: 15px 20px;
+	background-color: #ffc107;
+	border-radius: 5px;
+	color: white;
+}
+
+.buttonSuccess {
+	padding: 15px 20px;
+	background-color: #28a745;
+	border-radius: 5px;
+	color: white;
+}
+
+.button:hover {
+	background-color: firebrick;
+	color: white;
+}
+
+.buttonSecondary:hover {
+	background-color: #e0a800;
+	color: white;
+}
+
+.buttonSuccess:hover {
+	background-color: #218838;
+	color: white;
+}
+
+/******************** HEADER *******************/
+
+header {
+	background: #ff0000 url(../img/burgerHeader.jpg) center center no-repeat;
+	background-size: cover;
+	height: 400px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	color: white;
+}
+
+.headerNavButton {
+	line-height: 25px;
+}
+
+.headerNavButton:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.headerNavButton:hover:after {
+    width: 90%;
+    background: #ffc107;
+}
+
+/*BANDEAU HAUT : LOGO & MENU DÉROULANT*/
+
+.headBand {
+	background-color: red;
+	border: 2px solid red;
+	width: 100%;
+	height: 50px;
+}
+
+.navHeadBand {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navHeadBand a {
+	padding: 10px;
+	display: inline-block;
+}
+
+/*MENU DÉROULANT DE CONNEXION*/
+
+.navLog {
+	display: none;
+}
+
+.dropDownMenu {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #d7d7d7;
+	color: black;
+	margin: 0;
+	right: 0;
+	padding: 10px 30px;
+}
+
+.open {
+	display: block;
+}
+
+.dropDownMenu li a {
+	padding: 10px 0px;
+	margin: 10px 0;
+	width: 200px;
+	text-align: center;
+}
+
+/*MESSAGE DE BIENVENUE*/
+
+.welcomeMessage {
+	border-radius: 10px 100px / 120px;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+	padding: 15px 15px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+.animationLoginMessage {
+	-webkit-animation: animationLoginMessage 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: animationLoginMessage 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/*BANDEAU BAS DE NAVIGATION*/
+
+.lowHeadBand {
+	background-color: rgba(0,0,0, 0.2);
+	width: 100%;
+}
+
+.navlowHeadBand {
+	text-align: center;
+}
+
+.navlowHeadBand a {
+	padding: 15px 20px;
+	display: block;
+}
+
+@media (min-width: 768px) {
+	header .navlowHeadBand {
+		display: flex;
+		justify-content: space-between;
+	}
+	header .navlowHeadBand a {
+		display: inline-block;
+	}
+
+	.navLog {
+		position: relative;
+		display: inline-block;
+	}
+
+	.lowHeadBand .lowConnexionButton {
+		display: none;
+	}
+
+	.loginMessage {
+		font-size: 2rem;
+	}
+}
+
+/******************** MAIN *******************/
+
+main {
+	background-color: white;
+	padding: 15px;
+	text-align: center;
+}
+
+.intro p {
+	color: black;
+	font-size: 2rem;
+}
+
+/*VIGNETTES MENUS*/
+
+.mealItems {
+	width: 270px;
+	margin: 20px auto;
+	border-radius: 5px;
+	padding-bottom: 10px;
+	box-shadow: 0 0 5px #d7d7d7;
+}
+
+.mealItems h3 , .mealItems p {
+	height: 4rem;
+}
+
+.mealItems figure {
+	margin: 0;
+	text-align: center;
+	max-width: 100%;
+}
+
+.mealItems figcaption {
+    font: italic smaller sans-serif;
+}
+
+.mealItems figure img {
+	width: 100%;
+	height: 176px;
+	border-radius: 5px 5px 0 0;
+	/*Image de remplacement si pas de chargement*/
+	background: url("../img/loader.gif") center center no-repeat; 
+}
+
+/*FIN VIGNETTES MENUS*/
+
+.allMealsBanner {
+	margin: 30px 0;
+}
+
+.categories {
+	margin-bottom: 15px;
+}
+
+.categories ul {
+	padding: 0;
+}
+
+.categoryItems a img {
+	max-width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	box-shadow: 0 0 5px #d7d7d7;
+}
+
+@media (min-width: 768px) {
+	.lastMeals{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.lastMeals h2 {
+		width: 100%;
+	}
+
+	.mealItems {
+		width: 30%;
+	}
+
+	.lastMeals:hover .mealItems {
+		opacity: 0.33;
+	}
+
+	.lastMeals .mealItems:hover {
+		opacity: 1;
+	}
+
+	.allMealsBanner {
+		background: black url(../img/banniereUp.jpg);
+		position: relative;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 100%;
+		background-position: top center;
+		min-height: 300px;
+	}
+
+	.allMeals {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 600px;
+	}
+
+	.allMeals h2 {
+		color: white;
+		font-size: 4rem;
+		font-weight: bold;
+	}
+
+	.categories ul {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.jello:hover {
+	-webkit-animation: jello 0.9s both;
+	        animation: jello 0.9s both;
+	}
+
+	.vibrate:hover {
+		-webkit-animation: vibrate 0.3s linear infinite both;
+		        animation: vibrate 0.3s linear infinite both;
+	}
+}
+
+@media (min-width: 992px) {
+	.mealItems {
+		width: 24%;
+	}
+}
+/*DEPOSIT SUCCESS VIEW*/
+
+.validationPicture {
+	width: 200px;
+	height: auto;
+	max-width: 100%;
+}
+
+/*RECIPE VIEW*/
+
+.recipeTitle {
+	font-size: 2.5rem;
+	font-family: 'Barriecito', cursive;
+}
+
+.ingredientList {
+	padding: 0 15px 5px;
+	margin-right: 10px;
+	border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px #d7d7d7;
+}
+
+.ingredientList ul {
+	padding: 0;
+	text-align: left;
+}
+
+.ingredientList input[type=checkbox]:checked + label{
+	color: gainsboro;
+	text-decoration:line-through;
+}
+
+.recipeText p {
+	text-align: left;
+}
+
+@media (min-width: 768px) {
+
+	.ingredientList {
+		float: left;
+		width: 30%;
+	}
+
+	.recipeText {
+		float: left;
+		width: 65%;
+	}
+}
+
+/******************** FOOTER *******************/
+footer {
+	height: 200px;
+	background-color: red;
+	border-top: 3px solid firebrick;
+}
+.navFooter {
+	color: white;
+	text-align: center;
+}
+.navFooter a {
+	font-size: 3rem;
+	padding: 30px 15px;
+}
+.navFooter a:hover {
+	color: firebrick;
+}
+
+
+/******************** ANNIMATIONS *******************/
+
+
+@-webkit-keyframes jello {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(0.85, 1.15, 1);
+            transform: scale3d(0.85, 1.15, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(0.85, 1.15, 1);
+            transform: scale3d(0.85, 1.15, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@-webkit-keyframes vibrate {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+@keyframes vibrate {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+            transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+            transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@-webkit-keyframes animationLoginMessage {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes animationLoginMessage {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+  }
+}

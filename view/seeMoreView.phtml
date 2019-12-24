@@ -1,0 +1,13 @@
+<?php foreach ($meals as $meal): ?> 
+	<article class="mealItems" data-id="<?= $meal['id'] ?>">
+		<figure>
+		    <img src="img/<?= htmlspecialchars($meal['photo']) ?>"
+		         alt="<?= htmlspecialchars($meal['title']) ?>"
+		         title="<?= htmlspecialchars($meal['title']) ?>">
+		    <figcaption>Repas de "<?= htmlspecialchars($meal['firstname']) ?>"</figcaption>
+		</figure>
+		<h3><?= htmlspecialchars($meal['title']) ?></h3>
+		<p><?= htmlspecialchars($meal['description']) ?></p>
+		<a href="index.php?action=showRecipe&recipeId=<?= $meal['id'] ?>" class="button">Voir la recette</a>
+	</article>
+<?php endforeach ?>

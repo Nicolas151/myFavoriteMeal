@@ -1,0 +1,39 @@
+<?php $title = 'Connectez vous'; ?>
+
+
+<?php ob_start(); ?>
+<h2><i class="fa fa-lock"></i> Se connecter avec un compte utilisateur</h2>
+<form class="generalForm wrapper" action="index.php" method="post">
+    <aside class="error-message hidden">
+        <h3><i class="fas fa-skull-crossbones"></i> Il y a <span class="total-error-count">1</span> erreur(s) dans le formulaire ! <i class="fas fa-skull-crossbones"></i></h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <fieldset>
+        <legend>Informations d'authentification</legend>
+        <ul>
+            <li><input type="hidden" id="loginForm" name="loginForm" value="loginForm"></li>
+            <li>
+                <label for="email">E-mail* :</label>
+                <input type="text" id="email" name="email" data-name="E-mail" data-required data-type="email">
+            </li>
+            <li>
+                <label for="password">Mot de passe* :</label>
+                <input type="password" id="password" name="password" data-name="Mot de passe" data-required data-minlength="8">
+            </li>
+        </ul>
+    </fieldset>
+    <ul>
+        <li>
+          <input type="submit" class="buttonSuccess" value="Connection">
+          <a href="index.php" class="button">Annuler</a>
+        </li>
+    </ul>
+</form>
+<div class="wrapper formCaption">
+    <p class="smallCaption">*Mentions obligatoires</p>
+    <p>Pas encore de compte ? <strong><a href="index.php?action=user">Inscrivez-vous</a></strong></p>
+</div>
+<?php $content = ob_get_clean(); ?>
+
+
+<?php require('template.phtml'); ?>

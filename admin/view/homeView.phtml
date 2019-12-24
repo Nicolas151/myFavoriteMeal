@@ -1,0 +1,106 @@
+<?php $title = 'Accueil de l\'administration du site !'; ?>
+
+
+<?php ob_start(); ?>
+<div class="container">
+	<div class="row justify-content-center">
+		<h1>Administration du site</h1>
+	</div>
+	<div class="row mt-4 justify-content-center">
+		<h2 id="toValidate">Les recettes à valider (<?= count($meals)?>):</h2>
+	</div>		
+	<div class="row mt-4">
+		<?php if (!empty($meals)) : ?>
+			<table class="table table-striped table-responsive">
+			  <thead>
+			    <tr>
+			      <th scope="col">Recette n°</th>
+			      <th scope="col">Nom de l'utilisateur</th>
+			      <th scope="col">Titre</th>
+			      <th scope="col">Description</th>
+			      <th scope="col">Date</th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<?php foreach ($meals as $meal): ?> 
+				    <tr>
+				      <th scope="row"><?= $meal['id'] ?></th>
+				      <td><?= htmlspecialchars($meal['firstname']) ?> <?= htmlspecialchars($meal['lastname']) ?></td>
+				      <td><?= htmlspecialchars($meal['title']) ?></td>
+				      <td><?= htmlspecialchars($meal['description']) ?></td>
+				      <td><?= htmlspecialchars($meal['created_at']) ?></td>
+				      <td>
+				      	<a href="index.php?action=showRecipe&recipeId=<?= $meal['id'] ?>" class="btn btn-primary">Voir</a>
+				      </td>
+				    </tr>
+			    <?php endforeach ?>
+			  </tbody>
+			</table>
+		 <?php else : ?>
+		 	<div class="col">
+		 		<div class="alert alert-success" role="alert">
+		 		  Vous êtes à jour !
+		 		</div> 
+		 	</div>
+	    <?php endif ?>
+	</div>
+	<div class="row mt-4 justify-content-center">
+		<h2 id="searchRecipe">Rechercher une recette :</h2>
+	</div>
+	<?php if (isset($_GET['error']) && $_GET['error'] == 'searchError') : ?>
+		<div class="row">
+			<div class="col">
+				<div class="alert alert-danger" role="alert">
+					Erreur ! Aucune recette ne correspond à votre recherche.
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
+	<form class="mt-4" method="post" action="index.php?action=searchRecipe">
+	  <div class="row">
+	    <div class="col">
+	      <input type="text" name="recipeId" class="form-control form-control-lg" placeholder="Par numéro de recette">
+	    </div>
+	    <div class="col">
+	    	<button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
+	    </div>
+	  </div>
+	</form>
+	<form class="mt-4" method="post" action="index.php?action=searchRecipe">
+	  <div class="row">
+	    <div class="col">
+	      <input type="text" name="title" class="form-control form-control-lg" placeholder="Par titre">
+	    </div>
+	    <div class="col">
+	    	<button type="submit" class="btn btn-primary btn-lg">Rechercher</button>
+	    </div>
+	  </div>
+	</form>
+	<div class="row mt-4 justify-content-center">
+		<h2 id="editRecipe">Modifier une recette :</h2>
+	</div>
+	<?php if (isset($_GET['error']) && $_GET['error'] == 'editError') : ?>
+		<div class="row">
+			<div class="col">
+				<div class="alert alert-danger" role="alert">
+					Erreur ! Aucune recette ne correspond à votre recherche.
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
+	<form class="mt-4" method="post" action="index.php?action=edit">
+	  <div class="row">
+	    <div class="col">
+	      <input type="text" name="recipeId" class="form-control form-control-lg" placeholder="Numéro de la recette">
+	    </div>
+	    <div class="col">
+	    	<button type="submit" class="btn btn-warning btn-lg">Modifier</button>
+	    </div>
+	  </div>
+	</form>
+</div>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.phtml'); ?>
+

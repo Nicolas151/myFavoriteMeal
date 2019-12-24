@@ -1,0 +1,16 @@
+<ul>
+	<?php if(empty($ingredients)): ?>
+	 	<li><p>Votre recette ne contient aucun ingredient !</p></li>
+	<?php else: ?>
+	 	<?php foreach($ingredients as $ingredient): ?>
+	 		<li class="ingredients">
+	 			<div>
+	 				<p>- <?= htmlspecialchars($ingredient['quantity'])?><span class="article"> de </span><span class="ingredientName"><?= htmlspecialchars($ingredient['name'])?></span></p>
+	 			</div>
+	 			<button class="button button-cancel" title="Supprimer l'ingredient" data-ingredient-name="<?= htmlspecialchars($ingredient['name'])?>">
+	 				<i class="fa fa-trash"></i>
+	 			</button>	
+	 		</li>
+		<?php endforeach; ?>
+	<?php endif; ?>
+</ul>
