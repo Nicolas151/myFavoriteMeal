@@ -3,6 +3,7 @@
 
 class RecipeModel
 {
+	private $db;
 	
 	function __construct()
 	{
